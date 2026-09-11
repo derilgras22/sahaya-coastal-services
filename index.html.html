@@ -1,0 +1,671 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sahaya Coastal Services Agency — Local Help, One Message Away</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600;9..144,700&family=Work+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --teal-deep:#0f3d3e;
+    --teal-deeper:#0a2b2c;
+    --ivory:#f5f1e6;
+    --ivory-warm:#efe8d6;
+    --ochre:#e8a33d;
+    --ochre-dark:#c8862a;
+    --clay:#c1502e;
+    --ink:#1b1b16;
+    --ink-soft:#4a4a3f;
+    --line:rgba(27,27,22,0.12);
+    --radius-card:10px;
+    --wa-number:919000000000;
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    font-family:'Work Sans', sans-serif;
+    color:var(--ink);
+    background:var(--ivory);
+    line-height:1.55;
+  }
+  h1,h2,h3{
+    font-family:'Fraunces', serif;
+    margin:0;
+    color:var(--teal-deeper);
+  }
+  a{color:inherit;}
+  img{max-width:100%;display:block;}
+  .wrap{
+    max-width:1120px;
+    margin:0 auto;
+    padding:0 24px;
+  }
+
+  /* Header */
+  header{
+    position:sticky;
+    top:0;
+    z-index:50;
+    background:var(--teal-deep);
+    color:var(--ivory);
+    border-bottom:1px solid rgba(255,255,255,0.08);
+  }
+  .nav-row{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    padding:16px 24px;
+    max-width:1120px;
+    margin:0 auto;
+  }
+  .brand{
+    display:flex;
+    align-items:baseline;
+    gap:8px;
+    font-family:'Fraunces', serif;
+    color:var(--ivory);
+    text-decoration:none;
+  }
+  .brand strong{font-size:1.35rem; font-weight:700;}
+  .brand span{font-size:0.85rem; color:var(--ochre); font-weight:400;}
+  nav.links{
+    display:flex;
+    gap:28px;
+    font-size:0.95rem;
+  }
+  nav.links a{
+    text-decoration:none;
+    color:var(--ivory);
+    opacity:0.85;
+    transition:opacity 0.15s ease;
+  }
+  nav.links a:hover, nav.links a:focus-visible{opacity:1;}
+  .header-cta{
+    display:inline-flex;
+    align-items:center;
+    gap:8px;
+    background:var(--ochre);
+    color:var(--teal-deeper);
+    padding:9px 16px;
+    border-radius:999px;
+    text-decoration:none;
+    font-weight:600;
+    font-size:0.9rem;
+    transition:background 0.15s ease;
+    white-space:nowrap;
+  }
+  .header-cta:hover, .header-cta:focus-visible{background:var(--ochre-dark);}
+  .menu-toggle{
+    display:none;
+    background:none;
+    border:1px solid rgba(255,255,255,0.3);
+    color:var(--ivory);
+    padding:8px 10px;
+    border-radius:6px;
+    font-size:1rem;
+  }
+
+  /* Hero */
+  .hero{
+    background:
+      radial-gradient(circle at 82% 18%, rgba(232,163,61,0.16), transparent 45%),
+      var(--teal-deep);
+    color:var(--ivory);
+    padding:88px 0 96px;
+  }
+  .hero-grid{
+    display:grid;
+    grid-template-columns:1.15fr 0.85fr;
+    gap:56px;
+    align-items:center;
+  }
+  .hero h1{
+    color:var(--ivory);
+    font-size:clamp(2.2rem, 4vw, 3.4rem);
+    line-height:1.12;
+    font-weight:600;
+    max-width:16ch;
+  }
+  .hero p.lede{
+    margin-top:22px;
+    font-size:1.1rem;
+    color:rgba(245,241,230,0.82);
+    max-width:46ch;
+  }
+  .hero-ctas{
+    margin-top:32px;
+    display:flex;
+    gap:14px;
+    flex-wrap:wrap;
+  }
+  .btn{
+    display:inline-flex;
+    align-items:center;
+    gap:8px;
+    padding:13px 22px;
+    border-radius:999px;
+    text-decoration:none;
+    font-weight:600;
+    font-size:0.98rem;
+    border:1px solid transparent;
+    transition:transform 0.12s ease, background 0.15s ease;
+  }
+  .btn:hover{transform:translateY(-1px);}
+  .btn-primary{background:var(--ochre); color:var(--teal-deeper);}
+  .btn-primary:hover, .btn-primary:focus-visible{background:var(--ochre-dark);}
+  .btn-ghost{
+    background:transparent;
+    color:var(--ivory);
+    border-color:rgba(245,241,230,0.4);
+  }
+  .btn-ghost:hover, .btn-ghost:focus-visible{border-color:var(--ivory);}
+
+  .hero-panel{
+    background:rgba(245,241,230,0.06);
+    border:1px solid rgba(245,241,230,0.14);
+    border-radius:16px;
+    padding:28px;
+  }
+  .hero-panel-stat{
+    display:flex;
+    justify-content:space-between;
+    align-items:baseline;
+    padding:14px 0;
+    border-bottom:1px solid rgba(245,241,230,0.12);
+  }
+  .hero-panel-stat:last-child{border-bottom:none;}
+  .hero-panel-stat .num{
+    font-family:'Fraunces', serif;
+    font-size:1.6rem;
+    color:var(--ochre);
+  }
+  .hero-panel-stat .label{
+    font-size:0.9rem;
+    color:rgba(245,241,230,0.75);
+    text-align:right;
+    max-width:20ch;
+  }
+
+  /* Section shell */
+  section{padding:84px 0;}
+  .section-head{
+    max-width:60ch;
+    margin-bottom:44px;
+  }
+  .section-head h2{
+    font-size:clamp(1.7rem, 2.6vw, 2.3rem);
+    font-weight:600;
+  }
+  .section-head p{
+    margin-top:14px;
+    color:var(--ink-soft);
+    font-size:1.05rem;
+  }
+
+  /* Services grid */
+  .services{background:var(--ivory);}
+  .service-grid{
+    display:grid;
+    grid-template-columns:repeat(4, 1fr);
+    gap:18px;
+  }
+  .service-card{
+    background:#fff;
+    border:1px solid var(--line);
+    border-radius:var(--radius-card);
+    padding:24px;
+    display:flex;
+    flex-direction:column;
+    gap:10px;
+  }
+  .service-card .icon{
+    font-size:1.7rem;
+    line-height:1;
+  }
+  .service-card h3{
+    font-size:1.08rem;
+    font-weight:600;
+    color:var(--ink);
+    font-family:'Work Sans', sans-serif;
+  }
+  .service-card .price{
+    font-size:0.88rem;
+    color:var(--ink-soft);
+  }
+  .service-card .book{
+    margin-top:auto;
+    padding-top:10px;
+    font-size:0.9rem;
+    font-weight:600;
+    color:var(--clay);
+    text-decoration:none;
+    border-top:1px solid var(--line);
+  }
+  .service-card .book:hover{color:var(--ochre-dark);}
+
+  /* How it works */
+  .how{background:var(--ivory-warm);}
+  .how-list{
+    display:grid;
+    grid-template-columns:repeat(4, 1fr);
+    gap:22px;
+    counter-reset:step;
+  }
+  .how-item{
+    position:relative;
+    padding-left:0;
+  }
+  .how-item .step-num{
+    font-family:'Fraunces', serif;
+    font-size:2.1rem;
+    color:var(--ochre);
+    display:block;
+    margin-bottom:10px;
+  }
+  .how-item h3{
+    font-size:1.02rem;
+    font-family:'Work Sans', sans-serif;
+    font-weight:600;
+    color:var(--ink);
+  }
+  .how-item p{
+    margin-top:6px;
+    font-size:0.94rem;
+    color:var(--ink-soft);
+  }
+
+  /* Trust / stats strip */
+  .trust{
+    background:var(--teal-deeper);
+    color:var(--ivory);
+    padding:52px 0;
+  }
+  .trust-row{
+    display:flex;
+    justify-content:space-between;
+    flex-wrap:wrap;
+    gap:28px;
+  }
+  .trust-item .num{
+    font-family:'Fraunces', serif;
+    font-size:2rem;
+    color:var(--ochre);
+  }
+  .trust-item .label{
+    font-size:0.92rem;
+    color:rgba(245,241,230,0.75);
+    margin-top:4px;
+  }
+
+  /* Testimonials */
+  .voices{background:var(--ivory);}
+  .voice-grid{
+    display:grid;
+    grid-template-columns:repeat(3, 1fr);
+    gap:20px;
+  }
+  .voice-card{
+    background:#fff;
+    border:1px solid var(--line);
+    border-radius:var(--radius-card);
+    padding:26px;
+  }
+  .voice-card p.quote{
+    font-size:0.98rem;
+    color:var(--ink);
+    font-style:normal;
+  }
+  .voice-card .who{
+    margin-top:16px;
+    font-size:0.88rem;
+    color:var(--ink-soft);
+  }
+
+  /* Providers */
+  .providers{
+    background:var(--teal-deep);
+    color:var(--ivory);
+  }
+  .providers-grid{
+    display:grid;
+    grid-template-columns:1.1fr 0.9fr;
+    gap:48px;
+    align-items:center;
+  }
+  .providers h2{color:var(--ivory);}
+  .providers p{color:rgba(245,241,230,0.82); margin-top:14px; font-size:1.05rem;}
+  .providers ul{
+    margin-top:20px;
+    padding-left:0;
+    list-style:none;
+  }
+  .providers li{
+    padding:10px 0;
+    border-bottom:1px solid rgba(245,241,230,0.14);
+    font-size:0.98rem;
+  }
+  .providers-card{
+    background:rgba(245,241,230,0.07);
+    border:1px solid rgba(245,241,230,0.16);
+    border-radius:16px;
+    padding:30px;
+  }
+  .providers-card h3{color:var(--ivory); font-size:1.2rem;}
+  .providers-card p{font-size:0.95rem; margin-top:10px;}
+
+  /* Footer */
+  footer{
+    background:var(--teal-deeper);
+    color:rgba(245,241,230,0.75);
+    padding:48px 0 28px;
+    font-size:0.92rem;
+  }
+  .footer-grid{
+    display:grid;
+    grid-template-columns:1.4fr 1fr 1fr;
+    gap:32px;
+    padding-bottom:28px;
+    border-bottom:1px solid rgba(245,241,230,0.12);
+  }
+  footer h4{
+    font-family:'Work Sans', sans-serif;
+    color:var(--ivory);
+    font-size:0.95rem;
+    margin-bottom:12px;
+  }
+  footer a{
+    text-decoration:none;
+    color:rgba(245,241,230,0.75);
+    display:block;
+    margin-bottom:8px;
+  }
+  footer a:hover{color:var(--ivory);}
+  .footer-bottom{
+    padding-top:20px;
+    display:flex;
+    justify-content:space-between;
+    flex-wrap:wrap;
+    gap:10px;
+    font-size:0.85rem;
+  }
+
+  /* Responsive */
+  @media (max-width: 860px){
+    nav.links{display:none;}
+    .menu-toggle{display:inline-flex;}
+    .hero-grid{grid-template-columns:1fr;}
+    .service-grid{grid-template-columns:repeat(2, 1fr);}
+    .how-list{grid-template-columns:repeat(2, 1fr);}
+    .voice-grid{grid-template-columns:1fr;}
+    .providers-grid{grid-template-columns:1fr;}
+    .footer-grid{grid-template-columns:1fr;}
+    .trust-row{gap:22px;}
+  }
+  @media (prefers-reduced-motion: reduce){
+    html{scroll-behavior:auto;}
+    .btn{transition:none;}
+  }
+  :focus-visible{outline:2px solid var(--ochre); outline-offset:2px;}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="nav-row">
+    <a class="brand" href="#top">
+      <strong>Sahaya Coastal</strong><span>Services Agency</span>
+    </a>
+    <nav class="links">
+      <a href="#services">Services</a>
+      <a href="#how">How it works</a>
+      <a href="#providers">For providers</a>
+      <a href="#contact">Contact</a>
+    </nav>
+    <a class="header-cta" href="https://wa.me/919000000000?text=Hi%2C%20I%20need%20help%20finding%20a%20local%20service" target="_blank" rel="noopener">Message us</a>
+    <button class="menu-toggle" id="menuToggle" aria-label="Open menu" aria-expanded="false">☰</button>
+  </div>
+</header>
+
+<main id="top">
+  <section class="hero">
+    <div class="wrap hero-grid">
+      <div>
+        <h1>Local help, one message away.</h1>
+        <p class="lede">Electricians, plumbers, coconut tree climbers, cleaners, and more — trusted hands from around Kundapura, booked over WhatsApp in minutes, no app to download.</p>
+        <div class="hero-ctas">
+          <a class="btn btn-primary" href="#services">Browse services</a>
+          <a class="btn btn-ghost" href="https://wa.me/919000000000?text=Hi%2C%20I%20need%20help%20finding%20a%20local%20service" target="_blank" rel="noopener">Chat on WhatsApp</a>
+        </div>
+      </div>
+      <div class="hero-panel">
+        <div class="hero-panel-stat">
+          <span class="num">8</span>
+          <span class="label">Service categories covered</span>
+        </div>
+        <div class="hero-panel-stat">
+          <span class="num">Kundapura &amp; taluk</span>
+          <span class="label">Kota, Gangolli, Byndoor and nearby villages</span>
+        </div>
+        <div class="hero-panel-stat">
+          <span class="num">Same day</span>
+          <span class="label">Typical response time for urgent requests</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="services" id="services">
+    <div class="wrap">
+      <div class="section-head">
+        <h2>What you can book</h2>
+        <p>Tap a category to message us directly on WhatsApp — tell us your locality and the issue, and we'll line up someone nearby.</p>
+      </div>
+      <div class="service-grid">
+
+        <div class="service-card">
+          <span class="icon">💡</span>
+          <h3>Electrician</h3>
+          <span class="price">Visit from ₹150</span>
+          <a class="book" href="https://wa.me/919000000000?text=Hi%2C%20I%20need%20an%20electrician%20in%20___%20(your%20area)" target="_blank" rel="noopener">Book on WhatsApp →</a>
+        </div>
+
+        <div class="service-card">
+          <span class="icon">🔧</span>
+          <h3>Plumber</h3>
+          <span class="price">Visit from ₹150</span>
+          <a class="book" href="https://wa.me/919000000000?text=Hi%2C%20I%20need%20a%20plumber%20in%20___%20(your%20area)" target="_blank" rel="noopener">Book on WhatsApp →</a>
+        </div>
+
+        <div class="service-card">
+          <span class="icon">🥥</span>
+          <h3>Coconut tree climbing</h3>
+          <span class="price">From ₹40 per tree</span>
+          <a class="book" href="https://wa.me/919000000000?text=Hi%2C%20I%20need%20coconut%20tree%20climbing%20in%20___%20(your%20area)" target="_blank" rel="noopener">Book on WhatsApp →</a>
+        </div>
+
+        <div class="service-card">
+          <span class="icon">🧹</span>
+          <h3>House cleaning</h3>
+          <span class="price">From ₹500 per visit</span>
+          <a class="book" href="https://wa.me/919000000000?text=Hi%2C%20I%20need%20house%20cleaning%20in%20___%20(your%20area)" target="_blank" rel="noopener">Book on WhatsApp →</a>
+        </div>
+
+        <div class="service-card">
+          <span class="icon">🧺</span>
+          <h3>Appliance repair</h3>
+          <span class="price">Visit from ₹200</span>
+          <a class="book" href="https://wa.me/919000000000?text=Hi%2C%20I%20need%20appliance%20repair%20in%20___%20(your%20area)" target="_blank" rel="noopener">Book on WhatsApp →</a>
+        </div>
+
+        <div class="service-card">
+          <span class="icon">🎨</span>
+          <h3>Painting &amp; whitewash</h3>
+          <span class="price">Quote on visit</span>
+          <a class="book" href="https://wa.me/919000000000?text=Hi%2C%20I%20need%20painting%20work%20in%20___%20(your%20area)" target="_blank" rel="noopener">Book on WhatsApp →</a>
+        </div>
+
+        <div class="service-card">
+          <span class="icon">🪚</span>
+          <h3>Carpentry</h3>
+          <span class="price">Visit from ₹200</span>
+          <a class="book" href="https://wa.me/919000000000?text=Hi%2C%20I%20need%20a%20carpenter%20in%20___%20(your%20area)" target="_blank" rel="noopener">Book on WhatsApp →</a>
+        </div>
+
+        <div class="service-card">
+          <span class="icon">🐜</span>
+          <h3>Pest control</h3>
+          <span class="price">From ₹600 per visit</span>
+          <a class="book" href="https://wa.me/919000000000?text=Hi%2C%20I%20need%20pest%20control%20in%20___%20(your%20area)" target="_blank" rel="noopener">Book on WhatsApp →</a>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <section class="how" id="how">
+    <div class="wrap">
+      <div class="section-head">
+        <h2>How it works</h2>
+        <p>No account, no app — just a message.</p>
+      </div>
+      <div class="how-list">
+        <div class="how-item">
+          <span class="step-num">1</span>
+          <h3>Message your need</h3>
+          <p>Tell us the service and your locality over WhatsApp or a call.</p>
+        </div>
+        <div class="how-item">
+          <span class="step-num">2</span>
+          <h3>Get matched</h3>
+          <p>We connect you with a nearby provider we've personally vetted.</p>
+        </div>
+        <div class="how-item">
+          <span class="step-num">3</span>
+          <h3>Confirm details</h3>
+          <p>Agree on price and timing directly with the provider before they arrive.</p>
+        </div>
+        <div class="how-item">
+          <span class="step-num">4</span>
+          <h3>Pay after the job</h3>
+          <p>Pay the provider directly once the work is done, cash or UPI.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="trust">
+    <div class="wrap trust-row">
+      <div class="trust-item">
+        <div class="num">50+</div>
+        <div class="label">Verified local providers</div>
+      </div>
+      <div class="trust-item">
+        <div class="num">8</div>
+        <div class="label">Service categories</div>
+      </div>
+      <div class="trust-item">
+        <div class="num">4</div>
+        <div class="label">Taluk villages covered</div>
+      </div>
+      <div class="trust-item">
+        <div class="num">100%</div>
+        <div class="label">Free for customers to use</div>
+      </div>
+    </div>
+  </section>
+
+  <section class="voices">
+    <div class="wrap">
+      <div class="section-head">
+        <h2>What neighbours are saying</h2>
+        <p>Sample placeholder quotes — swap these for real feedback once you have customers.</p>
+      </div>
+      <div class="voice-grid">
+        <div class="voice-card">
+          <p class="quote">"Called about a leaking tap in the evening, someone was at my door by the next morning. Simple and honest."</p>
+          <p class="who">— Resident, Kundapura town</p>
+        </div>
+        <div class="voice-card">
+          <p class="quote">"Getting the coconut trees cleared before monsoon used to be a headache. One message sorted it this year."</p>
+          <p class="who">— Homeowner, Kota</p>
+        </div>
+        <div class="voice-card">
+          <p class="quote">"Good to have a number to call for house help instead of asking around every time."</p>
+          <p class="who">— Resident, Gangolli</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="providers" id="providers">
+    <div class="wrap providers-grid">
+      <div>
+        <h2>Are you a skilled tradesperson?</h2>
+        <p>Join Sahaya Coastal Services Agency and get work sent your way — no listing fee, no commission on your first three jobs.</p>
+        <ul>
+          <li>We handle the calls, you handle the work</li>
+          <li>Choose the jobs and areas that suit you</li>
+          <li>Get paid directly by the customer, no waiting</li>
+        </ul>
+      </div>
+      <div class="providers-card">
+        <h3>Join as a provider</h3>
+        <p>Send us your name, trade, and area on WhatsApp and we'll add you to the list.</p>
+        <div style="margin-top:18px;">
+          <a class="btn btn-primary" href="https://wa.me/919000000000?text=Hi%2C%20I%27d%20like%20to%20join%20Sahaya%20Coastal%20Services%20Agency%20as%20a%20service%20provider.%20My%20trade%20is%3A%20___" target="_blank" rel="noopener">Message to join →</a>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer id="contact">
+  <div class="wrap">
+    <div class="footer-grid">
+      <div>
+        <h4>Sahaya Coastal Services Agency</h4>
+        <p style="max-width:38ch; color:rgba(245,241,230,0.7);">A local services marketplace connecting Kundapura taluk households with trusted electricians, plumbers, cleaners, and more — one WhatsApp message away.</p>
+      </div>
+      <div>
+        <h4>Contact</h4>
+        <a href="https://wa.me/919000000000" target="_blank" rel="noopener">WhatsApp: +91 90000 00000</a>
+        <a href="mailto:hello@sahayakundapura.example">hello@sahayakundapura.example</a>
+      </div>
+      <div>
+        <h4>Service area</h4>
+        <a href="#" onclick="return false;">Kundapura town</a>
+        <a href="#" onclick="return false;">Kota &amp; Gangolli</a>
+        <a href="#" onclick="return false;">Byndoor</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2026 Sahaya Coastal Services Agency. Replace placeholder details before publishing.</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+  document.getElementById('menuToggle').addEventListener('click', function(){
+    var links = document.querySelector('nav.links');
+    var expanded = this.getAttribute('aria-expanded') === 'true';
+    this.setAttribute('aria-expanded', String(!expanded));
+    if(links.style.display === 'flex'){
+      links.style.display = 'none';
+    } else {
+      links.style.display = 'flex';
+      links.style.flexDirection = 'column';
+      links.style.position = 'absolute';
+      links.style.top = '64px';
+      links.style.left = '0';
+      links.style.right = '0';
+      links.style.background = 'var(--teal-deep)';
+      links.style.padding = '16px 24px';
+      links.style.gap = '16px';
+    }
+  });
+</script>
+
+</body>
+</html>
